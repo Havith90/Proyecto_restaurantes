@@ -1,3 +1,14 @@
 <h1>Bienvenido</h1>
 
 <%= @usuario.nombre_usuario %>
+
+<%= link_to "Editar", editar_usuario_path(@usuario), class: 'btn btn-warning' %>
+
+<!-- <a href="usuarios/1/editar"> Editar </a> -->
+<%= link_to usuario_path(@usuario), method: :delete, class: 'btn btn-danger' do %>
+<!-- <a href="usuarios/2"> </a>  -->
+    <i class="fas fa-trash-alt"></i>
+    Eliminar cuenta
+
+<% end %>
+

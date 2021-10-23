@@ -18,6 +18,8 @@ get       'usuarios/:id',            to: 'usuarios#mostrar',    as: 'usuario'
 get       'usuarios/:id/editar',     to: 'usuarios#editar',     as: 'editar_usuario'
 
 post      'usuarios',                to: 'usuarios#guardar',    as: 'usuarios'
-
+patch     'usuarios/:id',            to: 'usuarios#actualizar'
+put       'usuarios/:id',            to: 'usuarios#actualizar'  #buena práctica colocar el PUT
+delete    'usuarios/:id',            to: 'usuarios#eliminar'
 end
 

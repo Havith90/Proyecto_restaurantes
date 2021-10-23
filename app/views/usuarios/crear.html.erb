@@ -1,10 +1,16 @@
 <h1>Registro</h1>
     
+<% if flash[:eliminar] %>
+    <div class="alert alert-danger" role="alert">
+    <%= flash[:eliminar] %>
+    </div>
+<% end %>
+
 <%= render 'formulario', base_usuario: @usuario %> 
 
 <br>
 <br>
 <br>
 
-# el % con el = se muestra; ahora el % sin el = no se muestra, por eso el end no lleva =
-# este es un método (helper) nos ayuda a construir, l url se vuelve dinámico y solito sabe dónde enviarlo
+<!--  el % con el = se muestra; ahora el % sin el = no se muestra, por eso el end no lleva =-->
+<!--  este es un método (helper) nos ayuda a construir, l url se vuelve dinámico y solito sabe dónde enviarlo-->
