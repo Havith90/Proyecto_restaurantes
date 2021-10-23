@@ -10,6 +10,10 @@ class UsuariosController < ApplicationController
     def mostrar
         @usuario = Usuario.find(params[:id])
     end
+    #GET /usuarios/:id/editar
+    def editar
+        @usuario = Usuario.find(params[:id])
+    end
 
     #POST /USUARIOS
     def guardar
