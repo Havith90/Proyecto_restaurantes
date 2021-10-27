@@ -10,7 +10,42 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_10_21_234709) do
+ActiveRecord::Schema.define(version: 2021_10_26_001142) do
+
+  create_table "invitacions", force: :cascade do |t|
+    t.string "mensaje"
+    t.date "fecha"
+    t.integer "usuario_id", null: false
+    t.integer "restaurante_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["restaurante_id"], name: "index_invitacions_on_restaurante_id"
+    t.index ["usuario_id"], name: "index_invitacions_on_usuario_id"
+  end
+
+  create_table "platos", force: :cascade do |t|
+    t.string "nombre"
+    t.integer "precio"
+    t.string "descripcion"
+    t.integer "restaurante_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["restaurante_id"], name: "index_platos_on_restaurante_id"
+  end
+
+  create_table "restaurantes", force: :cascade do |t|
+    t.string "nombre"
+    t.integer "tipo_comida_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["tipo_comida_id"], name: "index_restaurantes_on_tipo_comida_id"
+  end
+
+  create_table "tipo_comidas", force: :cascade do |t|
+    t.string "tipo"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
 
   create_table "tipo_puntajes", force: :cascade do |t|
     t.string "tipo"
@@ -25,4 +60,8 @@ ActiveRecord::Schema.define(version: 2021_10_21_234709) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  add_foreign_key "invitacions", "restaurantes"
+  add_foreign_key "invitacions", "usuarios"
+  add_foreign_key "platos", "restaurantes"
+  add_foreign_key "restaurantes", "tipo_comidas"
 end
