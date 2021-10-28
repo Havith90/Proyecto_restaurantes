@@ -1,2 +1,0 @@
-class TipoPuntaje < ApplicationRecord
-end
