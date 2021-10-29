@@ -1,6 +1,6 @@
 class CreateTipoComidas < ActiveRecord::Migration[6.1]
   def change
-    create_table :tipo_comidas do |t|
+    create_table :tipos_comidas do |t|
       t.string :tipo
 
       t.timestamps

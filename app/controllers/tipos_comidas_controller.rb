@@ -33,7 +33,7 @@ class TiposComidasController < ApplicationController
         # guardar lo que llegue del formulario en la base de datos
         datos_tipo_comida = params.require(:tipo_comida).permit(:tipo)
         @tipo_comida = TipoComida.new(datos_tipo_comida)
-        if @tipo_comida.save
+        if @tipo_comida.save # pregunta por las valiciones, SI pasa todas, se guarda, SINO, agregar un hash de errores
             redirect_to tipos_comidas_path #es que si guardó
         else 
             render :crear #mostrar el formulario con el error
@@ -49,7 +49,7 @@ class TiposComidasController < ApplicationController
         # actualizar los campos necesarios
         @tipo_comida.tipo = datos_tipo_comida[:tipo]
         # guardar los cambios en la base de datos
-        @tipo_comida.save
+        @tipo_comida.save # pregunta por las valiciones, SI pasa todas, se guarda, SINO, agregar un hash de errores
         # redireccionar a la lista de todos los tipos de comida
         redirect_to tipos_comidas_path
     end

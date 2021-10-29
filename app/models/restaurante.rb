@@ -3,16 +3,16 @@ class Restaurante < ApplicationRecord
   has_many :platos
 
   has_many :invitaciones
-  has_many :usuarios, through: :invitaciones 
-  validates(:nombre, presence: true)
-  validates(:nombre, uniqueness: true)
+  #has_many :usuarios, through: :invitaciones 
+
+  has_many :promociones
+  # has_many :usuarios, through: :promociones
+
+  has_many :puntajes_restaurantes
+  has_many :puntajes, through: :puntajes_restaurantes
 
 
-# en class Plato (app model plato.rb plato
-# class Plato < ApplicationRecord
-# belongs_to :restaurante
+  validates(:nombre, presence: true, uniqueness: true)
+  validates(:tipo_comida_id, presence: true)
 
-# validates(:nombre, presence: true)
-# validates(:precio, presence: true)
-# validates(:descripcion, presence: true)
 end
