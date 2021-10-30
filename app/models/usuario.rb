@@ -16,4 +16,9 @@ class Usuario < ApplicationRecord
     validates(:nombre_usuario, presence: true)
     validates(:nombre_usuario, uniqueness: true)
 
+    private
+    
+    def capitalizar
+        self.nombre_usuario.capitalize!
+    end
 end

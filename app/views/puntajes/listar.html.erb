@@ -1,2 +1,35 @@
-<h1>Puntajes#listar</h1>
-<p>Find me in app/views/puntajes/listar.html.erb</p>
+<h1>
+    Listar Puntajes
+</h1>
+<!-- <p>Find me in app/views/puntajes/listar.html.erb</p> -->
+
+<%= link_to "Crear", nuevo_puntaje_path, class: 'btn btn-primary' %>
+
+<table class="table">
+    <tr>
+        <th>id</th>
+        <th class="text-center">tipo</th>
+        <th class="text-end">acciones</th>
+    </tr>
+    <% @todos_los_puntajes.each do |puntaje| %>
+        <tr>
+            <td> <%= puntaje.id %> </td>
+            <td class="text-center"> 
+                <%= link_to puntaje_path(puntaje) do %>
+                    <i class="fas fa-fish"></i>
+                    <%= puntaje.tipo %>
+                <% end %>
+            </td>
+            <td class="text-end">
+                <%= link_to puntaje_path(puntaje), class: 'btn btn-danger', method: :delete, data: { confirm: '¿Está seguro que quiere eliminar el registro?' } do %>
+                    <i class="fas fa-eraser"></i>
+                    Borrar
+                <% end %>
+                <%= link_to editar_puntaje_path(puntaje), class: 'btn btn-warning' do %>
+                    <i class="fas fa-edit"></i>
+                    Editar
+                <% end %>
+            </td>
+        </tr>
+    <% end %>
+</table>
