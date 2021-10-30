@@ -23,17 +23,6 @@ ActiveRecord::Schema.define(version: 2021_10_30_014713) do
     t.index ["usuario_id"], name: "index_invitaciones_on_usuario_id"
   end
 
-  create_table "invitacions", force: :cascade do |t|
-    t.string "mensaje"
-    t.date "fecha"
-    t.integer "usuario_id", null: false
-    t.integer "restaurante_id", null: false
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.index ["restaurante_id"], name: "index_invitacions_on_restaurante_id"
-    t.index ["usuario_id"], name: "index_invitacions_on_usuario_id"
-  end
-
   create_table "platos", force: :cascade do |t|
     t.string "nombre"
     t.integer "precio"
@@ -53,6 +42,12 @@ ActiveRecord::Schema.define(version: 2021_10_30_014713) do
     t.datetime "updated_at", precision: 6, null: false
     t.index ["restaurante_id"], name: "index_promociones_on_restaurante_id"
     t.index ["usuario_id"], name: "index_promociones_on_usuario_id"
+  end
+
+  create_table "puntajes", force: :cascade do |t|
+    t.string "tipo"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "puntajes_platos", force: :cascade do |t|
@@ -85,12 +80,6 @@ ActiveRecord::Schema.define(version: 2021_10_30_014713) do
     t.index ["tipo_comida_id"], name: "index_restaurantes_on_tipo_comida_id"
   end
 
-  create_table "tipo_comidas", force: :cascade do |t|
-    t.string "tipo"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-  end
-
   create_table "tipos_comidas", force: :cascade do |t|
     t.string "tipo"
     t.datetime "created_at", precision: 6, null: false
@@ -106,8 +95,6 @@ ActiveRecord::Schema.define(version: 2021_10_30_014713) do
 
   add_foreign_key "invitaciones", "restaurantes"
   add_foreign_key "invitaciones", "usuarios"
-  add_foreign_key "invitacions", "restaurantes"
-  add_foreign_key "invitacions", "usuarios"
   add_foreign_key "platos", "restaurantes"
   add_foreign_key "promociones", "restaurantes"
   add_foreign_key "promociones", "usuarios"
@@ -117,5 +104,5 @@ ActiveRecord::Schema.define(version: 2021_10_30_014713) do
   add_foreign_key "puntajes_restaurantes", "puntajes"
   add_foreign_key "puntajes_restaurantes", "restaurantes"
   add_foreign_key "puntajes_restaurantes", "usuarios"
-  add_foreign_key "restaurantes", "tipo_comidas"
+  add_foreign_key "restaurantes", "tipos_comidas"
 end

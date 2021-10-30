@@ -1,4 +1,4 @@
-class CreateTipoComidas < ActiveRecord::Migration[6.1]
+class CreateTiposComidas < ActiveRecord::Migration[6.1]
   def change
     create_table :tipos_comidas do |t|
       t.string :tipo
