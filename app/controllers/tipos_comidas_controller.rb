@@ -2,8 +2,9 @@
 class TiposComidasController < ApplicationController
 
     before_action :asignar_tipo_comida, only: [:mostrar, :editar, :actualizar, :eliminar]
-    before_action :mostrar_mensaje_antes
-    after_action  :mostrar_mensaje_despues 
+    #before_action :mostrar_mensaje_antes
+    #after_action  :mostrar_mensaje_despues 
+
     # GET /tipos_comidas
     def listar
         @todos_los_tipos = TipoComida.all.order(id: :asc)
@@ -39,7 +40,6 @@ class TiposComidasController < ApplicationController
             render :crear #mostrar el formulario con el error
         end
 
-        redirect_to tipos_comidas_path
     end
 
     def actualizar
@@ -77,3 +77,4 @@ class TiposComidasController < ApplicationController
     def mostrar_mensaje_despues
         puts "Hola después de la acción"
     end
+end

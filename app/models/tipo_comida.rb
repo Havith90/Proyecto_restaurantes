@@ -19,7 +19,7 @@ class TipoComida < ApplicationRecord
     end
 
     def enviar_correo
-        puts "DESPUÉS DE GUARDAR".CENTER(50,".")
+        puts "DESPUÉS DE GUARDAR".center(50,".")
     end
 
     def imprimir_el_eliminado

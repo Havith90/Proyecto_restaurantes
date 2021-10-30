@@ -49,7 +49,7 @@ Rails.application.routes.draw do
 
   post    'restaurantes',              to: 'restaurantes#guardar'
   patch   'restaurantes/:id',          to: 'restaurantes#actualizar'
-  put     'restaurantes/:id',          to: 'restaurantes#actualizar'
+  #put     'restaurantes/:id',          to: 'restaurantes#actualizar'
   delete  'restaurantes/:id',          to: 'restaurantes#eliminar'
 end
 

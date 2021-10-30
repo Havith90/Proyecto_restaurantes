@@ -14,14 +14,12 @@ class RestaurantesController < ApplicationController
         @tipos_comidas  = TipoComida.all 
     end
 
+    #GET /restaurantes/editar
     def editar
         @tipos_comidas  = TipoComida.all
     end
 
-    def editar
-        @tipos_comidas  = TipoComida.all
-    end
-
+    #GET /restaurantes/:id
     def mostrar
 
     end
@@ -30,7 +28,7 @@ class RestaurantesController < ApplicationController
     def guardar
         #datos_restaurantes = params.require(:restaurante)
         #.permit(:nombre, :tipo_comida_id)
-        @restaurante = Restaurante.new(params_restaurantes)
+        @restaurante = Restaurante.new(params_restaurante)
         if @restaurante.save
             redirect_to restaurantes_path #TODO: crear la ruta de todos los resturantes
         else
@@ -39,8 +37,9 @@ class RestaurantesController < ApplicationController
         end
     end
 
+    # GET/restaurantes/editar
     def actualizar
-        @restuanrate.nombre = params_restaurante[:nombre]
+        @restaurante.nombre = params_restaurante[:nombre]
         @restaurante.tipo_comida_id = params_restaurante[:tipo_comida_id]
         if @restaurante.save
             redirect_to restaurantes_path
@@ -55,6 +54,12 @@ class RestaurantesController < ApplicationController
         redirect_to restaurantes_path
     end
 
+    private
+
+    def asignar_restaurante
+        @restaurante = Restaurante.find(params[:id])
+    end
+    
     def params_restaurante
         datos_restaurantes = params.require(:restaurante).permit(:nombre, :tipo_comida_id)
     end
