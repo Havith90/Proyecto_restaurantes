@@ -20,7 +20,7 @@ Rails.application.routes.draw do
   # Rutas Puntajes
     # verbo      controlador             quien se hace cargo        alias (cómo creamos el path camino en rails)
     get         'puntajes',              to: 'puntajes#listar',     as: 'puntajes'
-    get         'puntajes/crear',        to: 'puntajes#crear',      as: 'crear_puntaje'
+    get         'puntajes/nuevo',        to: 'puntajes#crear',      as: 'nuevo_puntaje'
     get         'puntajes/:id',          to: 'puntajes#mostrar',    as: 'puntaje'
     get         'puntajes/:id/editar',   to: 'puntajes#editar',     as: 'editar_puntaje'
 
