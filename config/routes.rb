@@ -1,6 +1,9 @@
 Rails.application.routes.draw do
 
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
+  root "votaciones#listar"
+  post "votaciones/:id_restaurante/puntaje/:id_puntaje", to: "votaciones#votar", as: 'votar_restaurante'
+
 
       # Rutas Tipos Comidas
       get      'tipos_comidas',             to: 'tipos_comidas#listar',     as: 'tipos_comidas'     # listar 
@@ -30,19 +33,20 @@ Rails.application.routes.draw do
 
 
   #Usuarios
+  get       'usuarios',                to: 'usuarios#listar',     as: 'usuarios'
   get       'usuarios/nuevo',          to: 'usuarios#crear',      as: 'nuevo_usuario'
     #el as es para uso interno, no para la vita de los usarios, para llamar las rutas x este nombre, se hace mas facil
   get       'usuarios/:id',            to: 'usuarios#mostrar',    as: 'usuario'
   get       'usuarios/:id/editar',     to: 'usuarios#editar',     as: 'editar_usuario'
 
-  post      'usuarios',                to: 'usuarios#guardar',    as: 'usuarios'
+  post      'usuarios',                to: 'usuarios#guardar'
   patch     'usuarios/:id',            to: 'usuarios#actualizar'
   put       'usuarios/:id',            to: 'usuarios#actualizar'  #buena práctica colocar el PUT
   delete    'usuarios/:id',            to: 'usuarios#eliminar'
 
   #Restaurantes
 
-  get   'restaurantes',                 to: 'restaurantes#listar',     as: 'restaurantes'
+  get   'restaurantes',                to: 'restaurantes#listar',     as: 'restaurantes'
   get   'restaurantes/nuevo',          to: 'restaurantes#crear',      as: 'nuevo_restaurante'
   get   'restaurantes/:id',            to: 'restaurantes#mostrar',    as: 'restaurante'
   get   'restaurantes/:id/editar',     to: 'restaurantes#editar',     as: 'editar_restaurante'
@@ -51,5 +55,17 @@ Rails.application.routes.draw do
   patch   'restaurantes/:id',          to: 'restaurantes#actualizar'
   #put     'restaurantes/:id',          to: 'restaurantes#actualizar'
   delete  'restaurantes/:id',          to: 'restaurantes#eliminar'
+
+  #Platos
+
+  get   'platos',                      to: 'platos#listar',           as: 'platos'
+  get   'platos/crear',                to: 'platos#crear',            as: 'nuevo_plato'
+  get   'platos/:id',                  to: 'platos#mostrar',          as: 'plato'
+  get   'platos/:id/editar',           to: 'platos#editar',           as: 'editar_plato'
+
+  post    'platos',                    to: 'platos#guardar'
+  patch   'platos',                    to: 'platos#actualizar'
+  put     'platos',                    to: 'platos#actualizar'
+  delete  'platos',                    to: 'platos#eliminar'
 end
 
