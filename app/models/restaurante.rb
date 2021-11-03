@@ -1,5 +1,5 @@
 class Restaurante < ApplicationRecord
-  belongs_to(:tipo_comida)  #esto va en singular
+  belongs_to :tipo_comida  #esto va en singular
   has_many :platos
 
   has_many :invitaciones

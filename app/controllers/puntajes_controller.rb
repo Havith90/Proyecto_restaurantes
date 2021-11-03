@@ -43,7 +43,7 @@ class PuntajesController < ApplicationController
   #DELETE /puntajes/:id
   def eliminar
     
-    puntaje.destroy
+    @puntaje.destroy
     redirect_to puntajes_path
   end
 

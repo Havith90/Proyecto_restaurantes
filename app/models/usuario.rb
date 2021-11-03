@@ -1,5 +1,8 @@
 # en singular , xq rails lo pesca  y lo vuelve plural para buscarlo
 class Usuario < ApplicationRecord
+    
+    before_validation :capitalizar
+    
     has_secure_password
 
     has_many :invitaciones
